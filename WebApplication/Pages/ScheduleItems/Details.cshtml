@@ -1,0 +1,61 @@
+@page
+@model DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ScheduleItem</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ScheduleItem.Id)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ScheduleItem.Id)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ScheduleItem.Movie)
+        </dt>
+        <dd>
+            @Model.ScheduleItem.Movie.Title: (@Model.ScheduleItem.Movie.ReleaseDate.ToShortDateString())
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ScheduleItem.Room)
+        </dt>
+        <dd>
+            @Model.ScheduleItem.Room.RoomId (@(Model.ScheduleItem.Room.Seats.Count) seats)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ScheduleItem.StartTime)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ScheduleItem.StartTime)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ScheduleItem.Duration)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ScheduleItem.Duration)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ScheduleItem.EndTime)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ScheduleItem.EndTime)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ScheduleItem.Price)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ScheduleItem.Price)
+        </dd>
+    </dl>
+</div>
+<div>
+    @* <a asp-page="./Edit" asp-route-id="@Model.ScheduleItem.Id">Edit</a> | *@
+    <a asp-page="./Index">Back to List</a>
+</div>
