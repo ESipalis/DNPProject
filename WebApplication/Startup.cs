@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json;
 using WebApplication.Data;
 using WebApplication.Services;
 
@@ -65,6 +66,10 @@ namespace WebApplication
 
                     options.Conventions.AuthorizeFolder("/ScheduleItems", "IsManager");
                     options.Conventions.AllowAnonymousToPage("/ScheduleItems/Index");
+                })
+                .AddJsonOptions(options =>
+                {
+                    options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
                 });
 
             // Register no-op EmailSender used by account confirmation and password reset during development
