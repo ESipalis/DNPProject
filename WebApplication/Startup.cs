@@ -85,7 +85,6 @@ namespace WebApplication
                 app.UseExceptionHandler("/Error");
             }
 
-            app.UseDefaultFiles();
             app.UseStaticFiles();
 
             app.UseAuthentication();

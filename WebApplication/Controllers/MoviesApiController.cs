@@ -14,7 +14,7 @@ namespace WebApplication.Controllers
         }
 
 
-        [HttpPost]
+        [HttpGet]
         public IActionResult GetAll()
         {
             return Ok(_context.Movies);
