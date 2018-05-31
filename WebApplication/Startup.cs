@@ -66,6 +66,8 @@ namespace WebApplication
 
                     options.Conventions.AuthorizeFolder("/ScheduleItems", "IsManager");
                     options.Conventions.AllowAnonymousToPage("/ScheduleItems/Index");
+
+                    options.Conventions.AuthorizeFolder("/Tickets");
                 })
                 .AddJsonOptions(options =>
                 {
