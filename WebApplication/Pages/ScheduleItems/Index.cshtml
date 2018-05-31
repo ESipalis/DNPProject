@@ -69,7 +69,7 @@
                 @item.Seats.Count(seat => seat.OccupiedBy == null)
             </td>
             <td>
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a>
 
                 @if (User.Identity.IsAuthenticated)
                 {

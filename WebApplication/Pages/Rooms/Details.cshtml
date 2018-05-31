@@ -1,5 +1,7 @@
 @page
 @model DetailsModel
+@using Microsoft.AspNetCore.Authorization
+@inject IAuthorizationService AuthorizationService
 
 @{
     ViewData["Title"] = "Details";
@@ -28,7 +30,7 @@
 <div>
     @if ((await AuthorizationService.AuthorizeAsync(User, "IsManager")).Succeeded)
     {
-        <a asp-page="./Edit" asp-route-id="@Model.Room.RoomId">Edit</a> |
+        <a asp-page="./Edit" asp-route-id="@Model.Room.RoomId">Edit</a>
     }
     <a asp-page="./Index">Back to List</a>
 </div>
