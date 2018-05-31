@@ -7,9 +7,12 @@
 
 <h2>@ViewData["Title"]</h2>
 
-<p>
-    <a asp-page="Create">Add a movie</a>
-</p>
+@if ((await AuthorizationService.AuthorizeAsync(User, "IsManager")).Succeeded)
+{
+    <p>
+        <a asp-page="Create">Add a movie</a>
+    </p>
+}
 <table class="table">
     <thead>
     <tr>
@@ -45,9 +48,12 @@
                 @Html.DisplayFor(modelItem => item.Duration)
             </td>
             <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a>
+                @if ((await AuthorizationService.AuthorizeAsync(User, "IsManager")).Succeeded)
+                {
+                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a>
+                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                }
             </td>
         </tr>
     }

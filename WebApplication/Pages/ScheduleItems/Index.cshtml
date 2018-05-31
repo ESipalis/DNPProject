@@ -41,7 +41,8 @@
     </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.ScheduleItems) {
+    @foreach (var item in Model.ScheduleItems)
+    {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Id)
@@ -68,12 +69,14 @@
                 @item.Seats.Count(seat => seat.OccupiedBy == null)
             </td>
             <td>
-                @* <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> | *@
                 <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="/Tickets/BuyTicket" asp-route-id="@item.Id">Buy ticket</a> |
-                @* <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a> *@
+
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <a asp-page="/Tickets/BuyTicket" asp-route-id="@item.Id">Buy ticket</a>
+                }
             </td>
         </tr>
-}
+    }
     </tbody>
 </table>

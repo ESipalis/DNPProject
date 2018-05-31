@@ -9,7 +9,7 @@
 
 <div>
     <h4>Movie</h4>
-    <hr />
+    <hr/>
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Movie.Id)
@@ -38,6 +38,10 @@
     </dl>
 </div>
 <div>
-    <a asp-page="./Edit" asp-route-id="@Model.Movie.Id">Edit</a> |
+
+    @if ((await AuthorizationService.AuthorizeAsync(User, "IsManager")).Succeeded)
+    {
+        <a asp-page="./Edit" asp-route-id="@Model.Movie.Id">Edit</a> |
+    }
     <a asp-page="./Index">Back to List</a>
 </div>

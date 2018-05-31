@@ -33,9 +33,12 @@
                 @item.Seats.Count
             </td>
             <td>
-                <a asp-page="./Edit" asp-route-id="@item.RoomId">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.RoomId">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.RoomId">Delete</a>
+                @if ((await AuthorizationService.AuthorizeAsync(User, "IsManager")).Succeeded)
+                {
+                    <a asp-page="./Edit" asp-route-id="@item.RoomId">Edit</a>
+                    <a asp-page="./Delete" asp-route-id="@item.RoomId">Delete</a>
+                }
+                <a asp-page="./Details" asp-route-id="@item.RoomId">Details</a>
             </td>
         </tr>
     }
