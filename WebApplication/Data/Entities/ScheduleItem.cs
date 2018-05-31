@@ -19,7 +19,7 @@ namespace WebApplication.Data.Entities
             Room = room;
             StartTime = startTime;
             Price = price;
-            Seats = Room.Seats.Select(seat => new ScheduleItemSeat(seat, null)).ToList();
+            Seats = Room.Seats.Select(seat => new ScheduleItemSeat(this, seat, null)).ToList();
             Tickets = new List<Ticket>();
         }
 

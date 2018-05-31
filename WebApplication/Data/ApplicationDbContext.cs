@@ -25,7 +25,14 @@ namespace WebApplication.Data
                 .HasForeignKey("RoomId");
             builder.Entity<RoomSeat>().HasKey("SeatId", "RoomId");
 
-            builder.Entity<ScheduleItemSeat>().HasKey("ScheduleItemId", "RoomSeatRoomId", "RoomSeatSeatId");
+            builder.Entity<ScheduleItemSeat>().HasKey(seat => seat.Id);
+            builder.Entity<ScheduleItemSeat>().HasIndex("ScheduleItemId", "RoomSeatRoomId", "RoomSeatSeatId").IsUnique();
+
+            builder.Entity<Ticket>()
+                .HasOne(ticket => ticket.Seat)
+                .WithOne()
+                .HasForeignKey<Ticket>("SeatId");
+            builder.Entity<Ticket>().HasKey("SeatId");
 
             // Customize the ASP.NET Identity model and override the defaults if needed.
             // For example, you can rename the ASP.NET Identity table names and more.

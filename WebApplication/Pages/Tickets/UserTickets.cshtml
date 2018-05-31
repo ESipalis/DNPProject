@@ -1,0 +1,59 @@
+﻿@page
+@model UserTicketsModel
+
+@{
+    ViewData["Title"] = "Your tickets";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>
+            Movie
+        </th>
+        <th>
+            Date and Time
+        </th>
+        <th>
+            Room
+        </th>
+        <th>
+            Seat
+        </th>
+        <th>
+            Name
+        </th>
+        <th>
+            Final Price
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model.Tickets)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Seat.ScheduleItem.Movie.Title) (@item.Seat.ScheduleItem.Movie.ReleaseDate.ToShortDateString())
+            </td>
+            <td>
+                @item.Seat.ScheduleItem.StartTime.ToLongDateString()
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Seat.RoomSeat.Room.RoomId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Seat.RoomSeat.SeatId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Seat.OccupiedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PaidPrice)
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+

@@ -1,0 +1,77 @@
+﻿@page
+@model BuyTicketModel
+@{
+    ViewData["Title"] = "Buy ticket";
+}
+
+
+<h2>Buy Ticket</h2>
+
+<hr/>
+<div class="row">
+    <div class="col-md-8">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.ScheduleItemView.Movie)
+            </dt>
+            <dd>
+                @Model.ScheduleItemView.Movie.Title: (@Model.ScheduleItemView.Movie.ReleaseDate.ToShortDateString())
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.ScheduleItemView.Room)
+            </dt>
+            <dd>
+                @Model.ScheduleItemView.Room.RoomId
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.ScheduleItemView.StartTime)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.ScheduleItemView.StartTime)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.ScheduleItemView.Duration)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.ScheduleItemView.Duration)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.ScheduleItemView.EndTime)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.ScheduleItemView.EndTime)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.ScheduleItemView.Price)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.ScheduleItemView.Price)
+            </dd>
+        </dl>
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Input.SeatId" class="control-label"></label>
+                <select asp-for="Input.SeatId" class="form-control" asp-items="Model.SeatSelections"></select>
+                <span asp-validation-for="Input.SeatId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.Name" class="control-label"></label>
+                <input asp-for="Input.Name" class="form-control"/>
+                <span asp-validation-for="Input.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.DiscountCode" class="control-label"></label>
+                <input asp-for="Input.DiscountCode" class="form-control"/>
+                <span asp-validation-for="Input.DiscountCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Buy" class="btn btn-default"/>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}
