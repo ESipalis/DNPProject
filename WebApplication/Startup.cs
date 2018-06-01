@@ -60,12 +60,15 @@ namespace WebApplication
 
                     options.Conventions.AuthorizeFolder("/Movies", "IsManager");
                     options.Conventions.AllowAnonymousToPage("/Movies/Index");
+                    options.Conventions.AllowAnonymousToPage("/Movies/Details");
 
                     options.Conventions.AuthorizeFolder("/Rooms", "IsManager");
                     options.Conventions.AllowAnonymousToPage("/Rooms/Index");
+                    options.Conventions.AllowAnonymousToPage("/Rooms/Details");
 
                     options.Conventions.AuthorizeFolder("/ScheduleItems", "IsManager");
                     options.Conventions.AllowAnonymousToPage("/ScheduleItems/Index");
+                    options.Conventions.AllowAnonymousToPage("/ScheduleItems/Details");
 
                     options.Conventions.AuthorizeFolder("/Tickets");
                 })
