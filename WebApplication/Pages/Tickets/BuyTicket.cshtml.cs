@@ -79,6 +79,10 @@ namespace WebApplication.Pages.Tickets
             {
                 return NotFound();
             }
+            if(chosenSeat.OccupiedBy != null)
+            {
+                return NotFound();
+            }
 
             chosenSeat.OccupiedBy = Input.Name;
             decimal finalPrice = scheduleItem.Price;
