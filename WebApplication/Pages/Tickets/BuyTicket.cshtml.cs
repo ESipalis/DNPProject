@@ -85,6 +85,7 @@ namespace WebApplication.Pages.Tickets
             }
 
             chosenSeat.OccupiedBy = Input.Name;
+
             decimal finalPrice = scheduleItem.Price;
             if (Input.DiscountCode == "Manager")
             {
@@ -95,7 +96,8 @@ namespace WebApplication.Pages.Tickets
             var ticket = new Ticket(user, chosenSeat, finalPrice);
 
             _context.Tickets.Add(ticket);
-            _context.SaveChanges(true);
+            _context.Tickets.Add(ticket);
+            await _context.SaveChangesAsync();
 
 
             return RedirectToPage("./UserTickets");

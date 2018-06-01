@@ -10,5 +10,7 @@
     <p><a href="/api/movies">/api/movies</a>, /api/movies/{id:int}</p>
     <p><a href="api/schedule">/api/schedule</a>, /api/schedule/{id:int}</p>
 
-    <p>Buying tickets doesn't work for some reason, everything seems to be fine, it just doesn't get added to database?</p>
+    <p>For ticket buying to work correctly we need to call _context.Tickets.Add(ticket) twice for some reason?
+        <br/>Probably some concurrency issue?
+        <br/>BuyTicket.cshtml:98</p>
 </div>
